@@ -106,9 +106,6 @@ venv.bak/
 # Claude Code
 .claude/
 
-# uv
-uv.lock
-
 # people should really ignore this locally...
 .DS_Store
 .Rproj.user
