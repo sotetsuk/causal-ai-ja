@@ -125,7 +125,7 @@ abs(z_score) > 2.    #F
 #
 # Next, we assume the following causal DAG.
 #
-# ![online game DAG](images/online-game-dag.png)
+# ![online game DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%207/images/online-game-dag.png?raw=true)
 #
 # Here, we introduce Guild Membership - whether a player belongs to a player guild - as a common cause of side-quest engagement and in-game purchases.
 #
@@ -381,7 +381,7 @@ print(summary)
 #
 # We need an intervention operator that changes our causal graph to reflect this broken causal dependency. This intervention operator is called graph mutilation (also known as graph surgery) and is illustrated in the following figure.
 #
-# ![Graph Mutilation](images/graph_mutilation.png)
+# ![Graph Mutilation](https://github.com/altdeep/causalML/blob/master/book/chapter%207/images/graph_mutilation.png?raw=true)
 #
 # Graph mutilation removes incoming edge to the intervention target Side-quest Engagement.
 # While Guild Membership is a cause of side-quest engagement in normal settings, the experiment’s intervention on Side-quest Engagement broke that variable’s causal dependence on Guild Membership. Since that causal dependence is gone, graph mutilation changes the graph to one where the edge from Guild Membership to Side-quest engagement is snipped.
