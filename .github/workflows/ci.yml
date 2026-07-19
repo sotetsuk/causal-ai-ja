@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lock-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv lock --check
+
+  notebooks:
+    needs: lock-check
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        chapter:
+          - ch2
+          - ch3
+          - ch4-markov
+          - ch4-functional
+          - ch5
+          - ch6
+          - ch7
+          - ch9
+          - ch10
+          - ch11-bayesian
+          - ch11-dowhy
+          - ch12
+          - ch13
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      # pygraphviz (ch9 / ch10 / ch11-dowhy) のビルドに graphviz 本体が必要
+      - name: Install graphviz (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y graphviz libgraphviz-dev pkg-config
+
+      - name: Install graphviz (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install graphviz
+          echo "CFLAGS=-I$(brew --prefix graphviz)/include" >> "$GITHUB_ENV"
+          echo "LDFLAGS=-L$(brew --prefix graphviz)/lib" >> "$GITHUB_ENV"
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-suffix: ${{ matrix.chapter }}
+          python-version: "3.10"
+
+      - name: Sync dependencies
+        run: uv sync --group ${{ matrix.chapter }}
+
+      - name: Run chapter
+        run: bash scripts/run_chapter.sh ${{ matrix.chapter }}
+        timeout-minutes: 30

@@ -1,0 +1,123 @@
+[project]
+name = "causal-ai-book"
+version = "0.0.0"
+description = "『因果AI ―コードファーストで学ぶ因果推論―』のノートブック実行環境"
+requires-python = "==3.10.*"
+dependencies = []
+
+[tool.uv]
+package = false
+default-groups = ["notebook"]
+environments = [
+    "sys_platform == 'darwin'",
+    "sys_platform == 'linux'",
+]
+# 章ごとに依存パッケージのバージョンが非互換のため、章 group は相互排他とする。
+# 使い方: uv sync --group ch3 のように章単位で環境を構築する。
+conflicts = [
+    [
+        { group = "ch2" },
+        { group = "ch3" },
+        { group = "ch4-markov" },
+        { group = "ch4-functional" },
+        { group = "ch5" },
+        { group = "ch6" },
+        { group = "ch7" },
+        { group = "ch9" },
+        { group = "ch10" },
+        { group = "ch11-bayesian" },
+        { group = "ch11-dowhy" },
+        { group = "ch12" },
+        { group = "ch13" },
+    ],
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+# PyPI の torch 1.13 は Linux wheel のメタデータが nvidia-* 依存を無条件宣言しており
+# macOS の解決を壊すため、全プラットフォームで CPU index を使う
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[dependency-groups]
+# ノートブック実行系(全章共通、default group)
+notebook = ["jupytext>=1.16", "ipykernel", "nbconvert"]
+
+# 各章のバージョンピンはノートブック冒頭の Colab 向け pip install 指定に従う
+ch2 = ["pgmpy==0.1.24", "pyro-ppl==1.8.6", "pandas", "numpy<2"]
+ch3 = [
+    "pgmpy==0.1.24",
+    "pyro-ppl==1.8.6",
+    "graphviz==0.20.1",
+    "dowhy==0.11.1",
+    "pandas",
+    "numpy<2",
+    "matplotlib",
+    "networkx",
+]
+ch4-markov = ["pgmpy==0.1.24", "pandas==2.0.3", "networkx==3.3", "matplotlib", "numpy<2"]
+# pgmpy 0.1.19 は pkg_resources を使うため setuptools<81 が必要
+ch4-functional = ["pgmpy==0.1.19", "pandas==1.4.3", "statsmodels~=0.14.0", "numpy<2", "matplotlib", "setuptools<81"]
+ch5 = ["pyro-ppl==1.8.4", "torch", "torchvision", "pandas", "matplotlib", "numpy<2"]
+ch6 = ["pyro-ppl==1.9.0", "pgmpy==0.1.25", "matplotlib==3.7.1", "pandas", "numpy<2"]
+ch7 = ["pyro-ppl==1.9.0", "pandas==2.2.1", "pgmpy==0.1.25", "networkx", "matplotlib", "numpy<2"]
+ch9 = [
+    "pgmpy==0.1.25",
+    "graphviz==0.20.3",
+    "pygraphviz==1.13",
+    "networkx==2.8.8",
+    "torch==1.13.0",
+    "pyro-ppl==1.1.0",
+    "requests",
+    "matplotlib",
+    "numpy<2",
+]
+ch10 = [
+    "y0 @ git+https://github.com/y0-causal-inference/y0.git@v0.2.0",
+    "graphviz==0.20.3",
+    "pygraphviz==1.13",
+    "networkx==2.8.8",
+    "numpyro==0.15.0",
+    "funsor==0.4.5",
+    "jax",
+    "requests",
+    "ipython",
+    "matplotlib",
+]
+# 原書指定は torch==2.2.1+cu121 だが、CPU 環境向けに torch==2.2.1 とする
+ch11-bayesian = [
+    "pyro-ppl==1.9.0",
+    "graphviz==0.20.3",
+    "pandas==1.5.3",
+    "torch==2.2.1",
+    "seaborn",
+    "scikit-learn",
+    "ipython",
+    "numpy<2",
+]
+ch11-dowhy = [
+    "pygraphviz==1.12",
+    "dowhy==0.11.1",
+    # 0.15.0 は macOS arm64 wheel がなく sdist ビルドが失敗するため 0.15.1 を使う
+    "econml==0.15.1",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "numpy<2",
+]
+ch12 = ["pgmpy==0.1.24", "numpy<2", "requests"]
+ch13 = [
+    "dowhy==0.11.1",
+    "transformers==4.38.2",
+    "accelerate==0.28.0",
+    "pandas==2.0.3",
+    "numpy==1.25.2",
+    "pyro-ppl==1.9.0",
+    "torch",
+    "scikit-learn",
+    "matplotlib",
+]
