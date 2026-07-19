@@ -103,6 +103,12 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Claude Code
+.claude/
+
+# uv
+uv.lock
+
 # people should really ignore this locally...
 .DS_Store
 .Rproj.user
