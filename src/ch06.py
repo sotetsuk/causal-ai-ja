@@ -14,7 +14,7 @@
 # %% [markdown] id="HZk5tKUPWCz1"
 # # Chapter 6 - Structural Causal Models
 #
-# The notebook is a code companion to chapter 6 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/). <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%206/chapter_6_notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# The notebook is a code companion to chapter 6 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/). <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%206/chapter_6_notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 #
 # This notebook was written in Google Colab using Python version 3.10.12, pyro version 1.9.0, pgmpy version 0.1.25, and torch 2.3.0.
 
@@ -28,7 +28,7 @@
 #
 # Figure 6.1 in the book is a causal DAG relating femur length to height.
 #
-# ![A DAG mapping femur length to height](https://github.com/altdeep/causalML/blob/master/book/chapter%206/images/Figure%206_1%20femur-height-DAG.png?raw=true)
+# ![A DAG mapping femur length to height](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%206/images/Figure%206_1%20femur-height-DAG.png)
 #
 # Here is how we'd model it in Pyro.
 
@@ -59,7 +59,7 @@ cgm_model()
 # We have two new latent variables Nx and Ny with distributions P(Nx) and P(Ny). X and Y each have their own functions fx and fy that that deterministically set X and Y given their parents in the graph. This difference is key; X and Y are generated in the model described in Figure 6.1 but set deterministically in this new model. To emphasize this, I use the assignment operator “:=”, instead of the equal sign “=” to emphasize that fx and fy assign the values of x and y.
 # To meet our goal of converting our CGM to an SCM, we want P(X) and P(Y|X=x) to be the same across both models. To achieve this, we have to choose P(Nx), P(Ny), fx, and fy such that P(X) is still Normal(47, 2.3) and P(Y|X=x) is still Normal(25 + 3.3x, 3.3). One option is to do a simple reparameterization. Linear functions of normally distributed random variables are also normally distributed. So we can implement the model in Figure 6.3.
 #
-# ![A DAG mapping femur length to height](https://github.com/altdeep/causalML/blob/master/book/chapter%206/images/Figure%206_3_rewrite_as_SCM.png?raw=true)
+# ![A DAG mapping femur length to height](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%206/images/Figure%206_3_rewrite_as_SCM.png)
 #
 # In code, we rewrite this as:
 
@@ -129,12 +129,12 @@ generated_outcome
 # The correct answer is to switch doors. This question appeared in a column in Parade magazine in 1990, with the correct answer. Thousands of readers mailed in, including many with graduate-level mathematical training, to refute the answer and say that there is no advantage to switching, that staying or switching have the same probability of winning.
 #
 # The following figure illustrates the intuition behind why switching is better.
-# ![Illustration of Monte Hall Problem](https://github.com/altdeep/causalML/blob/master/book/chapter%206/images/monty_hall_illustration.png?raw=true)
+# ![Illustration of Monte Hall Problem](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%206/images/monty_hall_illustration.png)
 #
 # Switching doors is the correct answer because under the standard assumptions, the “switch” strategy has a probability of 2/3 of winning the car, while the “stay” strategy has only a 1/3 probability. It seems counterintuitive because each door has an equal chance of having the car when the game starts. It seems as if once the host eliminates one door, each remaining door should have a 50-50 chance. This logic is false because the host doesn’t eliminate a door at random. He only eliminates a door that isn’t the players initial selection and doesn’t have the car. 1/3 of the time those are the same door, and 2/3 of that time they are different doors; that 1/3-2/3 asymmetry is why the remaining doors don’t each have a 50-50 chance of having the car.
 #
 # But causal modeling makes the problem much more intuitive. We can represent this game with the following causal DAG.
-# ![monte hall DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%206/images/monte_hall_dag.png?raw=true)
+# ![monte hall DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%206/images/monte_hall_dag.png)
 #
 # The possible outcomes for each variable are as follows:
 #
@@ -430,7 +430,7 @@ import pandas as pd
 from torch import tensor
 import torch
 
-df = pd.read_csv("https://raw.githubusercontent.com/altdeep/causalML/master/datasets/enzyme-data.csv")   #A
+df = pd.read_csv("https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/enzyme-data.csv")   #A
 X = torch.tensor(df['x'].values).unsqueeze(1).float()    #B
 Y = torch.tensor(df['y'].values).unsqueeze(1).float()    #B
 

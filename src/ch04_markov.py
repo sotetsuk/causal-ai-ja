@@ -22,7 +22,7 @@
 #
 # Causal relationships impose conditional independence constraints on the joint probability distribution of the variables in the data generating process. [D-separation](https://networkx.org/documentation/stable/reference/algorithms/d_separation.html) is a graphical criterion used to determine whether a set of variables is independent of another set of variables, given a third set. The causal Markov assumption says that if our selected causal DAG is true, then variables that are d-separated in the graph will be conditionally independent. Let’s revisit the transportation model:
 #
-# ![transportation DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%204/images/transportation_DAG.png?raw=1)
+# ![transportation DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%204/images/transportation_DAG.png)
 #
 # * Age (A): Recorded as young (young) for individuals up to and including 29 years, adult (adult) for individuals between 30 and 60 years old (inclusive), and old (old) for people 61 and over.
 # * Gender (S): The self-reported gender of an individual, recorded as male (M), female (F), or other (O).
@@ -79,7 +79,7 @@ dag.get_independencies()    #A
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="NdwrB2CPZblr" outputId="1152e3cf-7472-4b1c-adde-ba4ffd6bd4f3"
 import pandas as pd
-survey_url = "https://raw.githubusercontent.com/altdeep/causalML/master/datasets/transportation_survey.csv"
+survey_url = "https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/transportation_survey.csv"
 fulldata = pd.read_csv(survey_url)
 
 data = fulldata[0:30]    #A

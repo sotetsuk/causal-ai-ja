@@ -14,7 +14,7 @@
 # %% [markdown] id="1fVlLeJQPfAh"
 # # Chapter 11, Part 2 - Bayesian Causal Graphical Inference Workflow
 # The notebook is a code companion to chapter 11 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).  View the [book resources](https://www.altdeep.ai/causalaibook) to see other tutorials and book-related links.
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%2011/Chapter_11_Bayesian_Causal_Graphical_Inference.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2011/Chapter_11_Bayesian_Causal_Graphical_Inference.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="u5dqByst7jkT" outputId="c7e588c1-6dc9-48aa-d1f9-bf186bbb309f"
 # !pip install pyro-ppl==1.9
@@ -27,11 +27,11 @@
 #
 # We target the following DAG, where the grey variables are latent.
 #
-# ![online gaming dag with latents](https://github.com/altdeep/causalML/blob/master/book/chapter%2011/images/latentDAG.png?raw=true)
+# ![online gaming dag with latents](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2011/images/latentDAG.png)
 #
 # We train the following model where Z is a proxy for the latent confounding in the DAG.
 #
-# ![online gaming dag with latent Z](https://github.com/altdeep/causalML/blob/master/book/chapter%2011/images/latentDAGsub.png?raw=true).
+# ![online gaming dag with latent Z](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2011/images/latentDAGsub.png).
 
 # %% [markdown] id="JthKrQTy-6Yo"
 # ## Listing 11.20 Load and reduce data to a subset of observed variables
@@ -43,7 +43,7 @@ import pandas as pd
 import torch
 
 url = ("https://raw.githubusercontent.com/altdeep/"    #A
-       "causalML/master/datasets/online_game_ate.csv")    #A
+       "causalAI/master/datasets/online_game_ate.csv")    #A
 df = pd.read_csv(url)    #A
 df = df[["Guild Membership", "Side-quest Engagement",   #B
          "Won Items", "In-game Purchases"]]   #B

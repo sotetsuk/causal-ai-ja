@@ -16,7 +16,7 @@
 #
 # The notebook is a code companion to chapter 9 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/). View the [book resources](https://www.altdeep.ai/causalaibook) to see other tutorials and book-related links.
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%209/Chapter_9_notebooks.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%209/Chapter_9_notebooks.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% id="3avePuoHFg-8" outputId="f4e7c487-5bc0-4120-f352-7c4fba9217fb" colab={"base_uri": "https://localhost:8080/"}
 # !pip install pgmpy==0.1.25
@@ -55,13 +55,13 @@ def download_code(url):    #B
 
 url_do = (     #C
     "https://raw.githubusercontent.com/altdeep/"     #C
-    "causalML/master/book/pgmpy_do.py"     #C
+    "causalAI/master/book/pgmpy_do.py"     #C
 )     #C
 code_do = download_code(url_do)     #C
 
 url_clone = (     #D
     "https://raw.githubusercontent.com/altdeep/"     #D
-    "causalML/master/book/chapter%209/hyp_function.py"     #D
+    "causalAI/master/book/chapter%209/hyp_function.py"     #D
 )     #D
 code_clone = download_code(url_clone)     #D
 
@@ -80,7 +80,7 @@ exec(code_clone)     #E
 #
 # We start by revisiting the SCM for the Monte Hall problem. Summarizing again, there is a game show where the player starts with a choice of three doors. Behind one door is a car. The player picks a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which does not have the car. The host gives the player the opportunity to switch doors. In this case since the player picked No. 1 and the host revealed the car is not behind door No. 3, the player can switch to door No. 2. The question is whether a strategy of staying with the original choice or switching doors is better. The answer is, counterintuitively to many, that a switching strategy is better -- two times out of three, the switching strategy leads to a win.
 #
-# ![monte hall image](https://github.com/altdeep/causalML/blob/master/book/chapter%209/images/monty_hall.png?raw=true)
+# ![monte hall image](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%209/images/monty_hall.png)
 #
 # We'll call the first die roll "Car Door Die Roll", it selects a door for placement of the car. The player rolls the second die, a variable we'll call "1st Choice Die Roll", to select the player's first door selection. Both dice rolls assign a 1/3 probability to each outcome.
 #
@@ -342,7 +342,7 @@ print(cf_dist2)
 #
 # We turn back to our femur and height model. To make things more interesting, we'll modify the model by adding a variable for biological sex, which drives both femur length and height. The following image illustrates the new causal DAG.
 #
-# ![DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%209/images/causalDAG.png?raw=true)
+# ![DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%209/images/causalDAG.png)
 #
 # ## Listing 9.11 Implement the femur SCM in pyro
 #
@@ -401,7 +401,7 @@ exogenous = {    #G
 #
 # Now, let's pose the conditional hypothetical "What would height be if femur length was 46cm?" The following figure illustrates the mutilated DAG representing the ideal intervention that sets femur length to 46.
 #
-# ![femur](https://github.com/altdeep/causalML/blob/master/book/chapter%209/images/causalDAG_int.png?raw=true)
+# ![femur](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%209/images/causalDAG_int.png)
 #
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 455} id="1vcxBbnVamPO" outputId="2844ee0a-9dcc-4696-d8a1-9a995a2c467b"
@@ -437,7 +437,7 @@ plt.show()    #C
 #
 # The following image illustrates the corresponding parallel world graph.
 #
-# ![counterfactual parallel world graph](https://github.com/altdeep/causalML/blob/master/book/chapter%209/images/causalDAG_cf.png?raw=true)
+# ![counterfactual parallel world graph](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%209/images/causalDAG_cf.png)
 
 # %% id="9QET0nsAbG9-"
 import torch.distributions.constraints as constraints
@@ -592,7 +592,7 @@ plt.show()    #A
 #
 # The dSprites dataset consists of 2D shapes, each rendered in eight possible positions, six possible scales, and forty possible rotations. The shapes are composed of five independent factors: shape, scale, rotation, x-position, and y-position.
 #
-# ![dsprites DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%209/images/dsprites_parallel.png?raw=true)
+# ![dsprites DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%209/images/dsprites_parallel.png)
 #
 # ## Listing 9.19 Load a dSprites image
 #
@@ -606,7 +606,7 @@ from matplotlib import pyplot as plt
 import io    #A
 import urllib.request    #A
 import numpy as np    #A
-url = ('https://github.com/altdeep/causalML/blob/master/'    #A
+url = ('https://github.com/altdeep/causalAI/blob/master/'    #A
        'book/chapter%209/sprites_example.npz?raw=true')    #A
 with urllib.request.urlopen(url) as response:    #A
     data = response.read()    #A
@@ -675,7 +675,7 @@ encoder_n_causal_factors = EncoderCausalFactors(    #I
 # Next we download and load the weights into the encoder of the causal factors.
 
 # %% id="z9tzqLiJaxcI" outputId="e08c239e-8157-43b2-9d4f-4b187ecfad18" colab={"base_uri": "https://localhost:8080/"}
-url = ('https://github.com/altdeep/causalML/raw/master/'    #A
+url = ('https://github.com/altdeep/causalAI/raw/master/'    #A
        'book/chapter%209/sprites-model-encoder-causal-factors.pt')    #A
 response = requests.get(url)    #A
 response.raise_for_status()    #A
@@ -686,7 +686,7 @@ state_dict = torch.load(    #A
     map_location=torch.device('cpu')    #A
 )    #A
 encoder_n_causal_factors.load_state_dict(state_dict)    #A
-#A Download the pre-trained weights to a temporary file and load them into the model. You can download the weights from 'https://github.com/altdeep/causalML/blob/master/book/chapter%209/sprites-model-encoder-causal-factors.pt?raw=true'
+#A Download the pre-trained weights to a temporary file and load them into the model. You can download the weights from 'https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%209/sprites-model-encoder-causal-factors.pt'
 
 # %% [markdown] id="uBM6ZPDc03Un"
 # # Listing 9.22 Generate examples of causal exogenous factors
@@ -797,7 +797,7 @@ def encode_one_hot(factor, cardinality=CARDINALITY):    #A
 # Next, we download the weights from Github and load them into the noise encoder.
 
 # %% id="3ChjZ7rrZxai"
-weight_url = ("https://github.com/altdeep/causalML/raw/master/"    #A
+weight_url = ("https://github.com/altdeep/causalAI/raw/master/"    #A
               "book/chapter%209/sprites-model-encoder-n-image.pt")    #A
 response = requests.get(weight_url)    #A
 response.raise_for_status()    #A
@@ -813,7 +813,7 @@ n_image_loc, n_image_scale = encoder_n_image.forward(    #B
     encode_one_hot(causal_factor)    #B
 )    #B
 n_image = torch.normal(n_image_loc, n_image_scale)    #C
-#A Load the pretrained weights. The weights are available from https://github.com/altdeep/causalML/blob/master/book/chapter%209/sprites-model-encoder-n-image.pt
+#A Load the pretrained weights. The weights are available from https://github.com/altdeep/causalAI/blob/master/book/chapter%209/sprites-model-encoder-n-image.pt
 #B pass the image and causal factors into the encoder and obtain $N_I$ location and scale parameters
 #C Generate from the posterior distribution on $N_I$.
 
@@ -858,7 +858,7 @@ decoder = Decoder(    #F
 # ## Listing 9.27 Download and load the decoder weights
 
 # %% id="b28MJBTTaoyS" outputId="972fb0a7-6201-4249-83e6-57b5391f271e" colab={"base_uri": "https://localhost:8080/"}
-dcdr_url = ("https://github.com/altdeep/causalML/raw/master/"    #A
+dcdr_url = ("https://github.com/altdeep/causalAI/raw/master/"    #A
        "book/chapter%209/sprites-model-decoder.pt")    #A
 response = requests.get(dcdr_url)    #A
 response.raise_for_status()    #A
@@ -869,7 +869,7 @@ state_dict = torch.load(    #A
     map_location=torch.device('cpu')    #A
 )    #A
 decoder.load_state_dict(state_dict)    #A
-#A Load the pretrained decoder weights. The weights are available at https://github.com/altdeep/causalML/blob/master/book/chapter%209/sprites-model-decoder.pt
+#A Load the pretrained decoder weights. The weights are available at https://github.com/altdeep/causalAI/blob/master/book/chapter%209/sprites-model-decoder.pt
 
 # %% [markdown] id="7fsuRWqV2bAl"
 # ## Listing 9.28 Helper function for plotting counterfactual image

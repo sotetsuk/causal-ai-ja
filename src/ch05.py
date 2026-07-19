@@ -16,7 +16,7 @@
 #
 # The notebook is a code companion to chapter 5 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%205/chapter_5_Connecting_Causality_and_Deep_Learning.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%205/chapter_5_Connecting_Causality_and_Deep_Learning.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 #
 # This notebook was written in Google Colab using Python version 3.10.12. The versions of the main libraries include:
 # * pyro version 1.84
@@ -30,7 +30,7 @@
 # %% [markdown] id="UVk-jq9hxOYo"
 # Pgmpy allows us to fit conventional Bayesian networks on a causal DAG. However, with modern deep probabilistic machine learning frameworks like pyro, we can build more nuanced and powerful causal models.  In this tutorial, we fit a variational autoencoder on a causal DAG that represents a dataset that mixes handwritten MNIST digits and typed T-MNIST images.
 #
-# ![TMNIST-MNIST](https://github.com/altdeep/causalML/blob/master/book/chapter%205/images/MNIST-TMNIST.png?raw=1)
+# ![TMNIST-MNIST](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%205/images/MNIST-TMNIST.png)
 
 # %% id="a_gEnU8rWN3e" colab={"base_uri": "https://localhost:8080/"} outputId="ddeb6bd9-07ae-4db7-ca56-9c1d2d6a5603"
 # !pip install pyro-ppl==1.8.4
@@ -96,7 +96,7 @@ from torch.utils.data import random_split
 
 def setup_dataloaders(batch_size=64, use_cuda=USE_CUDA):    #A
     combined_dataset = CombinedDataset(
-"https://raw.githubusercontent.com/altdeep/causalML/master/datasets/combined_mnist_tmnist_data.csv"
+"https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/combined_mnist_tmnist_data.csv"
     )
     n = len(combined_dataset)    #B
     train_size = int(0.8 * n)    #B

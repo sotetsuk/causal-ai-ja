@@ -16,7 +16,7 @@
 #
 # The notebook is a code companion to chapter 13 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%2013/Chapter_13_Causality_LLMs.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2013/Chapter_13_Causality_LLMs.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% [markdown] id="oQbJMbSrejuF"
 # This notebook was written with the following libraries and versions.
@@ -191,7 +191,7 @@ print(generated_text)    #C
 # %% id="uYq9PeUHLoUq" colab={"base_uri": "https://localhost:8080/"} outputId="9c47ae0f-b814-426a-c8dc-9eb381ec16af"
 import pandas as pd
 url = ("https://raw.githubusercontent.com/altdeep/"
-       "causalML/master/book/chapter%2013/"
+       "causalAI/master/book/chapter%2013/"
        "king-prince-kingdom-updated.csv")
 df = pd.read_csv(url)
 print(df.shape[0])    #A
@@ -222,23 +222,23 @@ print(df["Kingdom"][2])    #D
 #
 # First, I'll use a GPT-2 variant to model the King's action vignettes. As a text-completion model, it typically takes a prompt as input. But I'm going to train it to generate with an empty prompt and produce vignettes according to the marginal probabilities of the King's action texts in the training data, as in the following figure.
 #
-# ![king trained with GPT-2](https://github.com/altdeep/causalML/blob/master/book/chapter%2013/images/king-gpt-2.png?raw=1)
+# ![king trained with GPT-2](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2013/images/king-gpt-2.png)
 #
 # This figure GPT-2 is fine-tuned to represent the distribution of King's action vignettes.
 # Next, I'm going to use a BART sequence-to-sequence model for the causal Markov kernel Prince's action. Given the King's action vignette as input, it will generate a Prince's action vignette, as illustrated in the next issue.
 #
-# ![king2prince model](https://github.com/altdeep/causalML/blob/master/book/chapter%2013/images/king2prince.png?raw=1)
+# ![king2prince model](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2013/images/king2prince.png)
 #
 # This figure says a BART sequence-to-sequence model is fine-tuned to represent Prince's action given King's action.
 # We'll also use a BART sequence-to-sequence model to model the causal Markov kernel for Kingdom's fate, as shown in the next figure.
 #
-# ![kingdom model](https://github.com/altdeep/causalML/blob/master/book/chapter%2013/images/kingdom-model.png?raw=1)
+# ![kingdom model](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2013/images/kingdom-model.png)
 #
 # A BART sequence-to-sequence model is also used to model Kingdom's fate given King's action and Prince's action.
 # The model will map the King's action and Prince's action to the Kingdom's fate.
 # Jumping ahead, I'm going to be interested in the conditional probability distribution of Kingdom's fate given a certain action by the Prince. Since that will require inference of the King's actions given the Prince, I'm going to additionally train one more BART model, one that generates a King's action vignette given a Prince's action vignette, as shown in the next figure.
 #
-# ![prince2king model](https://github.com/altdeep/causalML/blob/master/book/chapter%2013/images/prince2king.png?raw=1)
+# ![prince2king model](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2013/images/prince2king.png)
 #
 # A BART sequence-to-sequence model is also fine-tuned to model Kingdom's fate given King's action and Prince's action.
 # Let's run the training procedure. First, we'll setup our imports and our tokenizer.
@@ -253,7 +253,7 @@ from transformers import (
     Seq2SeqTrainer, Seq2SeqTrainingArguments,
     Trainer, TrainingArguments)
 url = ("https://raw.githubusercontent.com/altdeep/"
-       "causalML/master/book/chapter%2013/"
+       "causalAI/master/book/chapter%2013/"
        "king-prince-kingdom-updated.csv")
 df = pd.read_csv(url)
 
@@ -794,7 +794,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 kingdom_samples_url = (
-    "https://raw.githubusercontent.com/altdeep/causalML/"
+    "https://raw.githubusercontent.com/altdeep/causalAI/"
     "master/book/chapter%2013/kingdom_samples.csv")
 all_samples = pd.read_csv(kingdom_samples_url)
 

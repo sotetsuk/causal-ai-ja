@@ -17,7 +17,7 @@
 #
 # The notebook is a code companion to chapter 4 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%204/Testing_a_causal_DAG_with_functional_constraints.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%204/Testing_a_causal_DAG_with_functional_constraints.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="xG2Uj-oSMPbP" outputId="85f32011-1009-482a-aefc-26d0632d607c"
 # Using pgmpy 0.1.19 because versions 0.1.20 - 0.1.24 (current at time of writing) have a bug that prevents this code from running. An issue has been created on Github.
@@ -30,7 +30,7 @@
 #
 # We look at the following model:
 #
-# ![verma_DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%204/images/verma_DAG.png?raw=1)
+# ![verma_DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%204/images/verma_DAG.png)
 #
 # This DAG implies the following conditional independencies:
 #
@@ -55,7 +55,7 @@ from functools import partial
 import numpy as np
 import pandas as pd
 
-data_url = "https://raw.githubusercontent.com/altdeep/causalML/master/datasets/cigs_and_cancer.csv"
+data_url = "https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/cigs_and_cancer.csv"
 data = pd.read_csv(data_url)    #A
 cost_lower = np.quantile(data["C"], 1/3)    #B
 cost_upper = np.quantile(data["C"], 2/3)    #B
