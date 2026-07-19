@@ -1,1 +1,0 @@
-# Projects covering causal model of epidemics
