@@ -8,6 +8,7 @@
 ## 内容
 
 - [src](./src) – 書籍中のコードを収録した Jupyter ノートブック(jupytext percent format の .py ファイル)
+- [notebooks](./notebooks) – src/ から自動生成した .ipynb(CI が生成・コミットするため手動編集しないでください)
 
 ## 実行環境
 
