@@ -5,7 +5,6 @@ This repository contains materials related to the book [Causal AI](https://www.r
 ## Contents
 
 - [book directory](./book) – Jupyter notebooks containing code from the book.
-- [datasets directory](./datasets) – Datasets used by the book notebooks.
 
 ## Usage
 
