@@ -2,7 +2,7 @@
 name = "causal-ai-book"
 version = "0.0.0"
 description = "『因果AI ―コードファーストで学ぶ因果推論―』のノートブック実行環境"
-# 本文に Python バージョンの指定はない。ch9 の torch==1.13.0 が Python 3.10 まで
+# 本文に Python バージョンの指定はない。ch09 の torch==1.13.0 が Python 3.10 まで
 # しか対応しないため、全章を 3.10 に統一している
 requires-python = "==3.10.*"
 dependencies = []
@@ -15,17 +15,17 @@ environments = [
     "sys_platform == 'linux'",
 ]
 # 章ごとに依存パッケージのバージョンが非互換のため、章 group は相互排他とする。
-# 使い方: uv sync --group ch3 のように章単位で環境を構築する。
+# 使い方: uv sync --group ch03 のように章単位で環境を構築する。
 conflicts = [
     [
-        { group = "ch2" },
-        { group = "ch3" },
-        { group = "ch4-markov" },
-        { group = "ch4-functional" },
-        { group = "ch5" },
-        { group = "ch6" },
-        { group = "ch7" },
-        { group = "ch9" },
+        { group = "ch02" },
+        { group = "ch03" },
+        { group = "ch04-markov" },
+        { group = "ch04-functional" },
+        { group = "ch05" },
+        { group = "ch06" },
+        { group = "ch07" },
+        { group = "ch09" },
         { group = "ch10" },
         { group = "ch11-bayesian" },
         { group = "ch11-dowhy" },
@@ -40,7 +40,7 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 # 【本文との差分】torch/torchvision は PyPI ではなく PyTorch の CPU index から取得する。
-# 理由: PyPI の torch 1.13 (ch9) は Linux wheel のメタデータが nvidia-* 依存を
+# 理由: PyPI の torch 1.13 (ch09) は Linux wheel のメタデータが nvidia-* 依存を
 # 無条件宣言しており、macOS 向けの依存解決を壊す。CPU index の wheel は nvidia 依存を
 # 持たず、macOS arm64 wheel も含む。バージョン自体は本文の指定どおり
 # (Linux x86_64 では同一リリースの +cpu ビルドになる)。
@@ -62,8 +62,8 @@ torchvision = { index = "pytorch-cpu" }
 # ノートブック実行系(全章共通、default group)。本文では Colab が提供していた環境に相当
 notebook = ["jupytext>=1.16", "ipykernel", "nbconvert"]
 
-ch2 = ["pgmpy==0.1.24", "pyro-ppl==1.8.6", "pandas", "numpy<2"]
-ch3 = [
+ch02 = ["pgmpy==0.1.24", "pyro-ppl==1.8.6", "pandas", "numpy<2"]
+ch03 = [
     "pgmpy==0.1.24",
     "pyro-ppl==1.8.6",
     "graphviz==0.20.1",
@@ -73,8 +73,8 @@ ch3 = [
     "matplotlib",
     "networkx",
 ]
-ch4-markov = ["pgmpy==0.1.24", "pandas==2.0.3", "networkx==3.3", "matplotlib", "numpy<2"]
-ch4-functional = [
+ch04-markov = ["pgmpy==0.1.24", "pandas==2.0.3", "networkx==3.3", "matplotlib", "numpy<2"]
+ch04-functional = [
     "pgmpy==0.1.19",
     "pandas==1.4.3",
     # 本文に install 指定はないが使用される。pandas 1.4 と互換の 0.14 系に制約
@@ -85,9 +85,9 @@ ch4-functional = [
     # setuptools 81 以降で削除されたため、80 以前が必要
     "setuptools<81",
 ]
-ch5 = ["pyro-ppl==1.8.4", "torch", "torchvision", "pandas", "matplotlib", "numpy<2"]
-ch6 = ["pyro-ppl==1.9.0", "pgmpy==0.1.25", "matplotlib==3.7.1", "pandas", "numpy<2"]
-ch7 = [
+ch05 = ["pyro-ppl==1.8.4", "torch", "torchvision", "pandas", "matplotlib", "numpy<2"]
+ch06 = ["pyro-ppl==1.9.0", "pgmpy==0.1.25", "matplotlib==3.7.1", "pandas", "numpy<2"]
+ch07 = [
     "pyro-ppl==1.9.0",
     "pandas==2.2.1",
     "pgmpy==0.1.25",
@@ -98,7 +98,7 @@ ch7 = [
     # 実行に必須(Colab にはプリインストールされていたため本文では省略されている)
     "graphviz==0.20.3",
 ]
-ch9 = [
+ch09 = [
     "pgmpy==0.1.25",
     "graphviz==0.20.3",
     "pygraphviz==1.13",
@@ -124,7 +124,7 @@ ch10 = [
 ch11-bayesian = [
     "pyro-ppl==1.9.0",
     # 【本文との差分】本文は graphviz==0.20。0.20.3 は 0.20 系のバグ修正版で
-    # API 互換のため、他章 (ch9/ch10) の指定に合わせて 0.20.3 とした
+    # API 互換のため、他章 (ch09/ch10) の指定に合わせて 0.20.3 とした
     "graphviz==0.20.3",
     "pandas==1.5.3",
     # 【本文との差分】本文は torch==2.2.1+cu121 (CUDA ビルド)。GPU がない環境でも
