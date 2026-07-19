@@ -23,14 +23,14 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         chapter:
-          - ch2
-          - ch3
-          - ch4-markov
-          - ch4-functional
-          - ch5
-          - ch6
-          - ch7
-          - ch9
+          - ch02
+          - ch03
+          - ch04-markov
+          - ch04-functional
+          - ch05
+          - ch06
+          - ch07
+          - ch09
           - ch10
           - ch11-bayesian
           - ch11-dowhy
@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # pygraphviz (ch9 / ch10 / ch11-dowhy) のビルドに graphviz 本体が必要
+      # pygraphviz (ch09 / ch10 / ch11-dowhy) のビルドに graphviz 本体が必要
       - name: Install graphviz (Linux)
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y graphviz libgraphviz-dev pkg-config

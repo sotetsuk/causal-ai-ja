@@ -1,6 +1,6 @@
 """ノートブック (.py, jupytext percent format) の import が通ることを検証する。
 
-使い方: python scripts/check_imports.py "book/chapter 5/chapter_5_....py"
+使い方: python scripts/check_imports.py book/ch05/ch05_....py
 
 ノートブック内の全 import 文からサードパーティのトップレベルモジュールを抽出し、
 importlib で順に import する。失敗があればまとめて報告して非ゼロ終了する。
