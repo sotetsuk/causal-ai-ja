@@ -1,0 +1,163 @@
+[project]
+name = "causal-ai-book"
+version = "0.0.0"
+description = "『因果AI ―コードファーストで学ぶ因果推論―』のノートブック実行環境"
+# 本文に Python バージョンの指定はない。ch9 の torch==1.13.0 が Python 3.10 まで
+# しか対応しないため、全章を 3.10 に統一している
+requires-python = "==3.10.*"
+dependencies = []
+
+[tool.uv]
+package = false
+default-groups = ["notebook"]
+environments = [
+    "sys_platform == 'darwin'",
+    "sys_platform == 'linux'",
+]
+# 章ごとに依存パッケージのバージョンが非互換のため、章 group は相互排他とする。
+# 使い方: uv sync --group ch3 のように章単位で環境を構築する。
+conflicts = [
+    [
+        { group = "ch2" },
+        { group = "ch3" },
+        { group = "ch4-markov" },
+        { group = "ch4-functional" },
+        { group = "ch5" },
+        { group = "ch6" },
+        { group = "ch7" },
+        { group = "ch9" },
+        { group = "ch10" },
+        { group = "ch11-bayesian" },
+        { group = "ch11-dowhy" },
+        { group = "ch12" },
+        { group = "ch13" },
+    ],
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+# 【本文との差分】torch/torchvision は PyPI ではなく PyTorch の CPU index から取得する。
+# 理由: PyPI の torch 1.13 (ch9) は Linux wheel のメタデータが nvidia-* 依存を
+# 無条件宣言しており、macOS 向けの依存解決を壊す。CPU index の wheel は nvidia 依存を
+# 持たず、macOS arm64 wheel も含む。バージョン自体は本文の指定どおり
+# (Linux x86_64 では同一リリースの +cpu ビルドになる)。
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+# ============================================================================
+# 各章の依存は book/ 以下の各ノートブック冒頭にコメントとして残されている
+# Colab 向け `!pip install` のバージョン指定に従う。本文の指定と異なる箇所には
+# 【本文との差分】コメントで理由を明示している。それ以外の差分は次の 2 種類のみ:
+#
+# - 本文に install 指定がなく import されるパッケージ (pandas, matplotlib 等) は
+#   バージョン無指定で追加し、uv.lock が具体バージョンを固定する
+# - 古い torch / pandas / pgmpy を使う章には "numpy<2" を明示する
+#   (これらは numpy 2 系と実行時に非互換なため。本文執筆時は numpy 1 系が前提)
+# ============================================================================
+[dependency-groups]
+# ノートブック実行系(全章共通、default group)。本文では Colab が提供していた環境に相当
+notebook = ["jupytext>=1.16", "ipykernel", "nbconvert"]
+
+ch2 = ["pgmpy==0.1.24", "pyro-ppl==1.8.6", "pandas", "numpy<2"]
+ch3 = [
+    "pgmpy==0.1.24",
+    "pyro-ppl==1.8.6",
+    "graphviz==0.20.1",
+    "dowhy==0.11.1",
+    "pandas",
+    "numpy<2",
+    "matplotlib",
+    "networkx",
+]
+ch4-markov = ["pgmpy==0.1.24", "pandas==2.0.3", "networkx==3.3", "matplotlib", "numpy<2"]
+ch4-functional = [
+    "pgmpy==0.1.19",
+    "pandas==1.4.3",
+    # 本文に install 指定はないが使用される。pandas 1.4 と互換の 0.14 系に制約
+    "statsmodels~=0.14.0",
+    "numpy<2",
+    "matplotlib",
+    # 【本文との差分】追加。pgmpy 0.1.19 が import する pkg_resources は
+    # setuptools 81 以降で削除されたため、80 以前が必要
+    "setuptools<81",
+]
+ch5 = ["pyro-ppl==1.8.4", "torch", "torchvision", "pandas", "matplotlib", "numpy<2"]
+ch6 = ["pyro-ppl==1.9.0", "pgmpy==0.1.25", "matplotlib==3.7.1", "pandas", "numpy<2"]
+ch7 = [
+    "pyro-ppl==1.9.0",
+    "pandas==2.2.1",
+    "pgmpy==0.1.25",
+    "networkx",
+    "matplotlib",
+    "numpy<2",
+    # 【本文との差分】追加。本文に install 指定はないが pyro.render_model() の
+    # 実行に必須(Colab にはプリインストールされていたため本文では省略されている)
+    "graphviz==0.20.3",
+]
+ch9 = [
+    "pgmpy==0.1.25",
+    "graphviz==0.20.3",
+    "pygraphviz==1.13",
+    "networkx==2.8.8",
+    "torch==1.13.0",
+    "pyro-ppl==1.1.0",
+    "requests",
+    "matplotlib",
+    "numpy<2",
+]
+ch10 = [
+    "y0 @ git+https://github.com/y0-causal-inference/y0.git@v0.2.0",
+    "graphviz==0.20.3",
+    "pygraphviz==1.13",
+    "networkx==2.8.8",
+    "numpyro==0.15.0",
+    "funsor==0.4.5",
+    "jax",
+    "requests",
+    "ipython",
+    "matplotlib",
+]
+ch11-bayesian = [
+    "pyro-ppl==1.9.0",
+    # 【本文との差分】本文は graphviz==0.20。0.20.3 は 0.20 系のバグ修正版で
+    # API 互換のため、他章 (ch9/ch10) の指定に合わせて 0.20.3 とした
+    "graphviz==0.20.3",
+    "pandas==1.5.3",
+    # 【本文との差分】本文は torch==2.2.1+cu121 (CUDA ビルド)。GPU がない環境でも
+    # 動くよう同一リリースの CPU ビルドに読み替えた
+    "torch==2.2.1",
+    "seaborn",
+    "scikit-learn",
+    "ipython",
+    "numpy<2",
+]
+ch11-dowhy = [
+    "pygraphviz==1.12",
+    # 【本文との差分】本文は dowhy==0.11。0.11.1 はバグ修正リリースで API 互換
+    "dowhy==0.11.1",
+    # 【本文との差分】本文は econml==0.15。0.15.0 には macOS arm64 wheel がなく
+    # sdist からのビルドも新しい numpy ヘッダと非互換で失敗するため、
+    # arm64 wheel が提供されている 0.15.1 を使う
+    "econml==0.15.1",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "numpy<2",
+]
+ch12 = ["pgmpy==0.1.24", "numpy<2", "requests"]
+ch13 = [
+    # 【本文との差分】本文は dowhy==0.11。0.11.1 はバグ修正リリースで API 互換
+    "dowhy==0.11.1",
+    "transformers==4.38.2",
+    "accelerate==0.28.0",
+    "pandas==2.0.3",
+    "numpy==1.25.2",
+    "pyro-ppl==1.9.0",
+    "torch",
+    "scikit-learn",
+    "matplotlib",
+]
