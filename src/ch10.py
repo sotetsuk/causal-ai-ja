@@ -16,14 +16,14 @@
 #
 # The notebook is a code companion to chapter 10 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/). View the [book resources](https://www.altdeep.ai/causalaibook) to see other tutorials and book-related links.
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%2010/Chapter_10_Identification_notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2010/Chapter_10_Identification_notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 #
 #
 # ## Listing 10.1 Creating a query in y0
 #
 # We work with the online gaming example mentioned in previous chapters, where a player's membership in a guild (G) drives side-quest engagement (E), and side-quest engagement and guild membership drive in-game purchases (I).
 #
-# ![online-gaming-dag](https://github.com/altdeep/causalML/blob/master/book/chapter%2010/images/online-gaming.png?raw=true)
+# ![online-gaming-dag](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2010/images/online-gaming.png)
 #
 # In identification, we work directly with queries. The library y0 in Python gives as a domain specific language for representing queries. Suppose where interested in the question, "How much in-game purchases would a player have if side-quest engagement were high?", i.e., the query $P(I_{E=e})$.
 
@@ -66,7 +66,7 @@ def download_code(url):    #A
         return None    #A
 url = (
     "https://raw.githubusercontent.com/altdeep/"
-    "causalML/master/book/chapter%2010/id_utilities.py"    #A
+    "causalAI/master/book/chapter%2010/id_utilities.py"    #A
 )
 utilities_code = download_code(url)    #A
 print(utilities_code)    #B
@@ -152,7 +152,7 @@ identify(identification_task)
 #
 # In our online gaming example, suppose you were not able to observe guild membership. Then you would not have backdoor identification of $P(I_{E=e})$. However, suppose we had a mediator between side-quest engagement (E) and In-game purchases (I) – a node on the between E and I. Specifically, our mediator represents won virtual items (W), as seen in the following figure.
 #
-# ![Causal DAG with mediation variable](https://github.com/altdeep/causalML/blob/master/book/chapter%2010/images/online-gaming-mediated.png?raw=true)
+# ![Causal DAG with mediation variable](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2010/images/online-gaming-mediated.png)
 #
 # The idea of won items is as follows. When a player successfully completes a side-quest, they win a virtual item. The more side-quests they finish, the more items they earn. Those won virtual items and purchased virtual items can complement one another. For example, winning a magic bow motivates purchases of magical arrows. Thus, the amount of won items a player has influences the amount of virtual items they purchase. Given this graph, we can use y0's implementation of graphical identification algorithms to derive the front door estimand.
 

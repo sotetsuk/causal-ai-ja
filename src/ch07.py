@@ -16,7 +16,7 @@
 # <h1>Chapter 7 - Interventions and Causal effects <br><sub>Online Gaming Case Study</sub>
 # </h1>
 #
-# The notebook is a code companion to chapter 7 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/). Load it in Google Colab: <a href="https://github.com/altdeep/causalML/blob/master/book/chapter%207/chapter_7_online_gaming_example.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# The notebook is a code companion to chapter 7 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/). Load it in Google Colab: <a href="https://github.com/altdeep/causalAI/blob/master/book/chapter%207/chapter_7_online_gaming_example.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 #
 # View the [book resources](https://www.altdeep.ai/causalaibook) to see other tutorials and book-related links.
 
@@ -36,7 +36,7 @@
 # %% colab={"base_uri": "https://localhost:8080/", "height": 175} id="TP-bCjzR1TKj" outputId="4e3c73d1-f2a0-424a-d40f-5167a6cd1364"
 import pandas as pd
 data_url = (    #A
-    "https://raw.githubusercontent.com/altdeep/causalML/master/"    #A
+    "https://raw.githubusercontent.com/altdeep/causalAI/master/"    #A
     "datasets/sidequests_and_purchases_obs.csv"    #A
 )    #A
 df = pd.read_csv(data_url)    #A
@@ -80,7 +80,7 @@ abs(z_score) > 2.  #F
 # %% colab={"base_uri": "https://localhost:8080/"} id="lrKQNEy58ZcG" outputId="f04de646-c32b-4dc3-aa77-6d7c3cb02649"
 import pandas as pd
 exp_data_url = (    #A
-    "https://raw.githubusercontent.com/altdeep/causalML/master/"    #A
+    "https://raw.githubusercontent.com/altdeep/causalAI/master/"    #A
     "datasets/sidequests_and_purchases_exp.csv"    #A
 )    #A
 df = pd.read_csv(exp_data_url)    #A
@@ -125,7 +125,7 @@ abs(z_score) > 2.    #F
 #
 # Next, we assume the following causal DAG.
 #
-# ![online game DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%207/images/online-game-dag.png?raw=true)
+# ![online game DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%207/images/online-game-dag.png)
 #
 # Here, we introduce Guild Membership - whether a player belongs to a player guild - as a common cause of side-quest engagement and in-game purchases.
 #
@@ -136,7 +136,7 @@ abs(z_score) > 2.    #F
 # %% id="IyfgGcndVoht"
 import pandas as pd
 full_obs_url = (    #A
-    "https://raw.githubusercontent.com/altdeep/causalML/master/"    #A
+    "https://raw.githubusercontent.com/altdeep/causalAI/master/"    #A
     "datasets/sidequests_and_purchases_full_obs.csv"    #A
 )    #A
 df = pd.read_csv(full_obs_url)     #A
@@ -361,7 +361,7 @@ print(summary)    #D
 
 # %% id="gDqlZsK8BbkX" colab={"base_uri": "https://localhost:8080/"} outputId="d3f82d16-2147-4f0b-cdbd-266fcc7e5c91"
 exp_data_url = (
-    "https://raw.githubusercontent.com/altdeep/causalML/master/"
+    "https://raw.githubusercontent.com/altdeep/causalAI/master/"
     "datasets/sidequests_and_purchases_exp.csv"
 )
 exp_df = pd.read_csv(exp_data_url)
@@ -381,7 +381,7 @@ print(summary)
 #
 # We need an intervention operator that changes our causal graph to reflect this broken causal dependency. This intervention operator is called graph mutilation (also known as graph surgery) and is illustrated in the following figure.
 #
-# ![Graph Mutilation](https://github.com/altdeep/causalML/blob/master/book/chapter%207/images/graph_mutilation.png?raw=true)
+# ![Graph Mutilation](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%207/images/graph_mutilation.png)
 #
 # Graph mutilation removes incoming edge to the intervention target Side-quest Engagement.
 # While Guild Membership is a cause of side-quest engagement in normal settings, the experiment’s intervention on Side-quest Engagement broke that variable’s causal dependence on Guild Membership. Since that causal dependence is gone, graph mutilation changes the graph to one where the edge from Guild Membership to Side-quest engagement is snipped.

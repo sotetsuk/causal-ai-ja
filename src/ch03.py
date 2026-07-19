@@ -17,7 +17,7 @@
 #
 # The notebook is a code companion to chapter 3 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%203/Chapter_3_Building_a_Causal_Graph.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%203/Chapter_3_Building_a_Causal_Graph.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% id="APJ2_62w5oLu" outputId="87f77a7b-f3cb-452e-a51e-dabceb73e0f6" colab={"base_uri": "https://localhost:8080/"}
 # For stability of this notebook, I install the versions of the libraries that were current at the time of writing.
@@ -55,7 +55,7 @@ def true_dgp(jenny_inclination, brian_inclination, window_strength):    #A
 # %% [markdown] id="t7ncjfFO4W-K"
 # This data generating process implies the following DAG.
 #
-# ![Window breaking DGP](https://github.com/altdeep/causalML/blob/master/book/chapter%203/images/window_breaking_DAG.png?raw=1)
+# ![Window breaking DGP](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%203/images/window_breaking_DAG.png)
 #
 
 # %% [markdown] id="kXlxbId87B20"
@@ -79,7 +79,7 @@ model = BayesianNetwork(    #A
 #B Inut the DAG as a list of edges (tuples).
 
 # %% [markdown] id="c101BY4g4W-L"
-# ![transportation DAG](https://github.com/altdeep/causalML/blob/master/book/chapter%203/images/transportation_DAG.png?raw=1)
+# ![transportation DAG](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%203/images/transportation_DAG.png)
 
 # %% [markdown] id="FFvQMs-f7GTa"
 # ## Listing 3.3: Loading transportation data
@@ -89,7 +89,7 @@ model = BayesianNetwork(    #A
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 424} id="amScTPVM7Gl9" outputId="9b79f394-80ba-492b-968d-b935454e6377"
 import pandas as pd
-url='https://raw.githubusercontent.com/altdeep/causalML/master/datasets/transportation_survey.csv'    #A
+url='https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/transportation_survey.csv'    #A
 data = pd.read_csv(url)
 data
 
@@ -162,7 +162,7 @@ print(cmk_T)    #D
 import pandas as pd
 from pgmpy.models import BayesianNetwork
 from pgmpy.estimators import ExpectationMaximization as EM
-url='https://raw.githubusercontent.com/altdeep/causalML/master/datasets/transportation_survey.csv'    #A
+url='https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/transportation_survey.csv'    #A
 data = pd.read_csv(url)    #A
 data_sans_E = data[['A', 'S', 'O', 'R', 'T']]    #B
 model_with_latent = BayesianNetwork(

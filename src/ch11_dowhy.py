@@ -16,7 +16,7 @@
 #
 # The notebook is a code companion to chapter 11 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).  View the [book resources](https://www.altdeep.ai/causalaibook) to see other tutorials and book-related links.
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%2011/Chapter_11_DoWhy_Causal_Effect_Workflow.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2011/Chapter_11_DoWhy_Causal_Effect_Workflow.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="cvkoqysCeZpS" outputId="03ebfcca-cdad-4d72-b68b-5017dcbe6f69"
 # !apt-get install graphviz libgraphviz-dev pkg-config    #A
@@ -38,7 +38,7 @@
 # * Player Skill Level (S): A score of how well the player performs in game tasks.
 # * Total inventory (V): The amount of game items the player has accumulated.
 #
-# ![causal DAG with latent](https://github.com/altdeep/causalML/blob/master/book/chapter%2011/images/gamingDAG.png?raw=true)
+# ![causal DAG with latent](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2011/images/gamingDAG.png)
 #
 # We are interested in finding the average treatment effect between Side-quest Engagement and In-game Purchases.
 #
@@ -85,7 +85,7 @@ Image('/tmp/causal_graph.png')    #E
 # %% colab={"base_uri": "https://localhost:8080/"} id="RHvs5CLMIOsf" outputId="50b75f0e-0425-45d0-9005-23f2c38bb484"
 import pandas as pd
 data = pd.read_csv(
-    "https://raw.githubusercontent.com/altdeep/causalML/master/datasets/online_game_example_do_why.csv"    #A
+    "https://raw.githubusercontent.com/altdeep/causalAI/master/datasets/online_game_example_do_why.csv"    #A
 )
 print(data.columns)    #B
 
@@ -97,7 +97,7 @@ print(data.columns)    #B
 #
 # In our data, Prior Experience (Y) is unobserved.
 #
-# ![causal DAG with latent](https://github.com/altdeep/causalML/blob/master/book/chapter%2011/images/gamingDAGLatent.png?raw=true)
+# ![causal DAG with latent](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2011/images/gamingDAGLatent.png)
 #
 # We use the CausalModel class to represent the DAG and tell us if the ATE is identified.
 
@@ -160,7 +160,7 @@ print(causal_estimate_reg)
 # Propensity score methods are a collection of estimation methods for the backdoor estimand that use a quantity called the propensity score. The traditional definition of a propensity score is the probability of being exposed to the treatment conditional on the confounders. In the context of the online gaming example, this is the probability a player has high side-quest engagement given their guild membership (G), time spent playing (T), and player skill level (S), i.e. P(E=1|T=t, G=g, S=s) where t, i, and s are that player’s values for T, I, and S. In other words, it quantifies the player’s “propensity” of being exposed to the treatment (E=1). Typically P(E=1|T=t, G=g, S=s) is fit by logistic regression.
 # But we can take a more expansive, machine learning friendly view of the propensity score. You can learn a propensity score function λ(...) of the backdoor adjustment set of confounders that renders those confounders conditionally independent of the treatment, as in the following figure.
 #
-# ![DAG with propensity score node](https://github.com/altdeep/causalML/blob/master/book/chapter%2011/images/propensity_score_node.png?raw=true)
+# ![DAG with propensity score node](https://raw.githubusercontent.com/altdeep/causalAI/master/book/chapter%2011/images/propensity_score_node.png)
 #
 
 # %% id="eb_5Ny5Lp2XI" colab={"base_uri": "https://localhost:8080/"} outputId="b7a4c54e-247d-40de-ba32-eb691db1d26b"

@@ -17,7 +17,7 @@
 #
 # The notebook is a code companion to chapter 2 of the book [Causal AI](https://www.manning.com/books/causal-ai) by [Robert Osazuwa Ness](https://www.linkedin.com/in/osazuwa/).
 #
-# <a href="https://colab.research.google.com/github/altdeep/causalML/blob/master/book/chapter%202/Chapter_2_Primer_on_Probability_Modeling.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%202/Chapter_2_Primer_on_Probability_Modeling.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # %% [markdown] id="MjO5TOkYgm53"
 # This code was written with pgmpy version 0.1.24 and pyro version 1.8.6. Install from within a Python environment using:
