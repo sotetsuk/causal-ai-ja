@@ -36,9 +36,9 @@ echo "== $group: $mode: $file"
 case "$mode" in
   execute)
     out="${RUNNER_TEMP:-/tmp}/${group}.ipynb"
-    uv run --group "$group" jupytext --to notebook --execute -o "$out" "$file"
+    uv run --exact --group "$group" jupytext --to notebook --execute -o "$out" "$file"
     ;;
   import-check)
-    uv run --group "$group" python scripts/check_imports.py "$file"
+    uv run --exact --group "$group" python scripts/check_imports.py "$file"
     ;;
 esac

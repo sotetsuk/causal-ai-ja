@@ -64,7 +64,8 @@ ch4-markov = ["pgmpy==0.1.24", "pandas==2.0.3", "networkx==3.3", "matplotlib", "
 ch4-functional = ["pgmpy==0.1.19", "pandas==1.4.3", "statsmodels~=0.14.0", "numpy<2", "matplotlib", "setuptools<81"]
 ch5 = ["pyro-ppl==1.8.4", "torch", "torchvision", "pandas", "matplotlib", "numpy<2"]
 ch6 = ["pyro-ppl==1.9.0", "pgmpy==0.1.25", "matplotlib==3.7.1", "pandas", "numpy<2"]
-ch7 = ["pyro-ppl==1.9.0", "pandas==2.2.1", "pgmpy==0.1.25", "networkx", "matplotlib", "numpy<2"]
+# graphviz は pyro.render_model() に必要
+ch7 = ["pyro-ppl==1.9.0", "pandas==2.2.1", "pgmpy==0.1.25", "networkx", "matplotlib", "numpy<2", "graphviz==0.20.3"]
 ch9 = [
     "pgmpy==0.1.25",
     "graphviz==0.20.3",
