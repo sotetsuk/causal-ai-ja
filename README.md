@@ -1,16 +1,10 @@
-# Causal AI Book
+# 因果AI ―コードファーストで学ぶ因果推論―
 
-This repository contains materials related to the book [Causal AI](https://www.robertosazuwaness.com/causal-ai-book/). The book focuses on intervention-based reasoning, causal inference algorithms, counterfactuals, and the integration of causal structure into modern ML systems.
+本リポジトリは、共立出版より刊行の訳書
+[『因果AI ―コードファーストで学ぶ因果推論―』](https://www.kyoritsu-pub.co.jp/book/b10169134.html)(Robert Osazuwa Ness 著・小山田創哲 訳)のサポートページです。
 
-## Contents
+原著 *Causal AI* (Manning Publications, 2025) の公式リポジトリ [altdeep/causalAI](https://github.com/altdeep/causalAI) の fork です。
 
-- [book directory](./book) – Jupyter notebooks containing code from the book.
+## 内容
 
-## Usage
-
-Use this repository to:
-
-- Load and run code from the book.
-- Build or extend materials on causal inference, causal ML, and counterfactual modeling in your own teaching or research practice.
-
-All materials in this repository are open and reusable for educational and research purposes.
+- [book](./book) – 書籍中のコードを収録した Jupyter ノートブック
