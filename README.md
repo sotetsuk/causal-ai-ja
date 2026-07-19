@@ -7,7 +7,7 @@
 
 ## 内容
 
-- [book](./book) – 書籍中のコードを収録した Jupyter ノートブック(jupytext percent format の .py ファイル)
+- [src](./src) – 書籍中のコードを収録した Jupyter ノートブック(jupytext percent format の .py ファイル)
 
 ## 実行環境
 
@@ -20,26 +20,26 @@ jupytext で実行してください。
 ```sh
 # 例: 第3章
 uv sync --group ch03
-uv run --group ch03 jupytext --to notebook --execute book/ch03/ch03_building_a_causal_graph.py
+uv run --group ch03 jupytext --to notebook --execute src/ch03/ch03.py
 ```
 
 `bash scripts/run_chapter.sh ch03` でも同じことができます(CI と同一の入口)。
 
 | group | ノートブック |
 |---|---|
-| `ch02` | `book/ch02/ch02_primer_on_probability_modeling.py` |
-| `ch03` | `book/ch03/ch03_building_a_causal_graph.py` |
-| `ch04-markov` | `book/ch04/ch04_testing_markov_property_on_transportation_dag.py` |
-| `ch04-functional` | `book/ch04/ch04_testing_a_causal_dag_with_functional_constraints.py` |
-| `ch05` | `book/ch05/ch05_connecting_causality_and_deep_learning.py` |
-| `ch06` | `book/ch06/ch06_notebook.py` |
-| `ch07` | `book/ch07/ch07_online_gaming_example.py` |
-| `ch09` | `book/ch09/ch09_notebooks.py` |
-| `ch10` | `book/ch10/ch10_identification_notebook.py` |
-| `ch11-bayesian` | `book/ch11/ch11_bayesian_causal_graphical_inference.py` |
-| `ch11-dowhy` | `book/ch11/ch11_dowhy_causal_effect_workflow.py` |
-| `ch12` | `book/ch12/ch12_causal_decision.py` |
-| `ch13` | `book/ch13/ch13_causality_llms.py` |
+| `ch02` | `src/ch02/ch02.py` |
+| `ch03` | `src/ch03/ch03.py` |
+| `ch04-markov` | `src/ch04/ch04_markov.py` |
+| `ch04-functional` | `src/ch04/ch04_functional.py` |
+| `ch05` | `src/ch05/ch05.py` |
+| `ch06` | `src/ch06/ch06.py` |
+| `ch07` | `src/ch07/ch07.py` |
+| `ch09` | `src/ch09/ch09.py` |
+| `ch10` | `src/ch10/ch10.py` |
+| `ch11-bayesian` | `src/ch11/ch11_bayesian.py` |
+| `ch11-dowhy` | `src/ch11/ch11_dowhy.py` |
+| `ch12` | `src/ch12/ch12.py` |
+| `ch13` | `src/ch13/ch13.py` |
 
 注意:
 
