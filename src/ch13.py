@@ -423,7 +423,7 @@ def compute_log_probs(model, output_sequence):
 # %% id="zNF8WKOeN-u_" colab={"base_uri": "https://localhost:8080/"} outputId="aebbe931-df83-4882-a4bd-0c29b5dda088"
 king_output = generate_from_model(king_model)
 king_statement = convert_to_text(king_output)
-print("Generated from king_nodel:", king_statement)
+print("Generated from king_model:", king_statement)
 log_prob_king = compute_log_probs(king_model, king_output)
 print("Log prob of generated king text:", log_prob_king)
 
