@@ -623,7 +623,7 @@ combined_indices = np.concatenate((obs_indices, int_indices))
 combined_indices = np.unique(combined_indices)
 
 # %% [markdown] id="GvicKlELRu1W"
-# ## リスト12.25
+# ## リスト13.25
 
 # %% id="jp0SgOXsRvBs"
 import matplotlib.pyplot as plt
