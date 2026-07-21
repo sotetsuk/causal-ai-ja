@@ -7,40 +7,39 @@
 
 ## 内容
 
-- [src](./src) – 書籍中のコードを収録した Jupyter ノートブック(jupytext percent format の .py ファイル)
-- [notebooks](./notebooks) – src/ から自動生成した .ipynb(CI が生成・コミットするため手動編集しないでください)
+- [notebooks](./notebooks) – 書籍中のコードを収録した Jupyter ノートブック
+- [src](./src) – notebooks/ の生成元(jupytext percent format の .py ファイル、管理用。
+  notebooks/ は CI が src/ から自動生成します)
 
-## 実行環境
+## ノートブックの起動
 
-[uv](https://docs.astral.sh/uv/) で各章のノートブックを再現実行できます(Python 3.10)。
+[uv](https://docs.astral.sh/uv/) で各章のノートブックを実行できます(Python 3.10)。
 
 章ごとに必要なパッケージのバージョンが互いに非互換なため、章単位の
 dependency-group に分かれています。実行したい章の group を `uv sync` してから
-jupytext で実行してください。
+Jupyter を起動してください。
 
 ```sh
 # 例: 第3章
 uv sync --group ch03
-uv run --group ch03 jupytext --to notebook --execute src/ch03.py
+uv run --group ch03 jupyter lab notebooks/ch03.ipynb
 ```
 
-`bash scripts/run_chapter.sh ch03` でも同じことができます(CI と同一の入口)。
-
-| group | ノートブック |
-|---|---|
-| `ch02` | `src/ch02.py` |
-| `ch03` | `src/ch03.py` |
-| `ch04-markov` | `src/ch04_markov.py` |
-| `ch04-functional` | `src/ch04_functional.py` |
-| `ch05` | `src/ch05.py` |
-| `ch06` | `src/ch06.py` |
-| `ch07` | `src/ch07.py` |
-| `ch09` | `src/ch09.py` |
-| `ch10` | `src/ch10.py` |
-| `ch11-bayesian` | `src/ch11_bayesian.py` |
-| `ch11-dowhy` | `src/ch11_dowhy.py` |
-| `ch12` | `src/ch12.py` |
-| `ch13` | `src/ch13.py` |
+| group | Notebook | 原著 Notebook (GitHub) | 原著 Colab |
+|---|---|---|---|
+| `ch02` | [ch02.ipynb](./notebooks/ch02.ipynb) | [Chapter_2_Primer_on_Probability_Modeling.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%202/Chapter_2_Primer_on_Probability_Modeling.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%202/Chapter_2_Primer_on_Probability_Modeling.ipynb) |
+| `ch03` | [ch03.ipynb](./notebooks/ch03.ipynb) | [Chapter_3_Building_a_Causal_Graph.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%203/Chapter_3_Building_a_Causal_Graph.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%203/Chapter_3_Building_a_Causal_Graph.ipynb) |
+| `ch04-markov` | [ch04_markov.ipynb](./notebooks/ch04_markov.ipynb) | [Testing_Markov_Property_on_Transportation_DAG.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%204/Testing_Markov_Property_on_Transportation_DAG.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%204/Testing_Markov_Property_on_Transportation_DAG.ipynb) |
+| `ch04-functional` | [ch04_functional.ipynb](./notebooks/ch04_functional.ipynb) | [Testing_a_causal_DAG_with_functional_constraints.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%204/Testing_a_causal_DAG_with_functional_constraints.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%204/Testing_a_causal_DAG_with_functional_constraints.ipynb) |
+| `ch05` | [ch05.ipynb](./notebooks/ch05.ipynb) | [chapter_5_Connecting_Causality_and_Deep_Learning.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%205/chapter_5_Connecting_Causality_and_Deep_Learning.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%205/chapter_5_Connecting_Causality_and_Deep_Learning.ipynb) |
+| `ch06` | [ch06.ipynb](./notebooks/ch06.ipynb) | [chapter_6_notebook.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%206/chapter_6_notebook.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%206/chapter_6_notebook.ipynb) |
+| `ch07` | [ch07.ipynb](./notebooks/ch07.ipynb) | [chapter_7_online_gaming_example.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%207/chapter_7_online_gaming_example.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%207/chapter_7_online_gaming_example.ipynb) |
+| `ch09` | [ch09.ipynb](./notebooks/ch09.ipynb) | [Chapter_9_notebooks.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%209/Chapter_9_notebooks.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%209/Chapter_9_notebooks.ipynb) |
+| `ch10` | [ch10.ipynb](./notebooks/ch10.ipynb) | [Chapter_10_Identification_notebook.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%2010/Chapter_10_Identification_notebook.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2010/Chapter_10_Identification_notebook.ipynb) |
+| `ch11-bayesian` | [ch11_bayesian.ipynb](./notebooks/ch11_bayesian.ipynb) | [Chapter_11_Bayesian_Causal_Graphical_Inference.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%2011/Chapter_11_Bayesian_Causal_Graphical_Inference.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2011/Chapter_11_Bayesian_Causal_Graphical_Inference.ipynb) |
+| `ch11-dowhy` | [ch11_dowhy.ipynb](./notebooks/ch11_dowhy.ipynb) | [Chapter_11_DoWhy_Causal_Effect_Workflow.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%2011/Chapter_11_DoWhy_Causal_Effect_Workflow.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2011/Chapter_11_DoWhy_Causal_Effect_Workflow.ipynb) |
+| `ch12` | [ch12.ipynb](./notebooks/ch12.ipynb) | [chapter_12_causal_decision.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%2012/chapter_12_causal_decision.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2012/chapter_12_causal_decision.ipynb) |
+| `ch13` | [ch13.ipynb](./notebooks/ch13.ipynb) | [Chapter_13_Causality_LLMs.ipynb](https://github.com/altdeep/causalAI/blob/master/book/chapter%2013/Chapter_13_Causality_LLMs.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2013/Chapter_13_Causality_LLMs.ipynb) |
 
 注意:
 
