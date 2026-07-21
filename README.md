@@ -55,3 +55,12 @@ uv run --group ch03 jupyter lab notebooks/ch03.ipynb
   import 検証のみ行っています)。
 - `ch10` / `ch12` は、取得したコードの実行前確認(`exec` のアンコメントや `input()` への応答)を
   読者が対話的に行う設計のため、CI では import 検証のみです。
+
+## 原著関連リンク
+
+- [Manning 書籍ページ](https://www.manning.com/books/causal-ai) – 原著 *Causal AI* (Robert Osazuwa Ness, Manning Publications, 2025)
+- [liveBook](https://livebook.manning.com/book/causal-ai) – 原著のオンライン版
+- [altdeep/causalAI](https://github.com/altdeep/causalAI) – 原著の公式コードリポジトリ(本リポジトリの fork 元)
+- [altdeep/causalML](https://github.com/altdeep/causalML) – 著者による因果機械学習の講義資料リポジトリ(ノートブック実行時のデータ取得元)
+- [著者による書籍紹介ページ](https://www.robertosazuwaness.com/causal-ai-book/) – 各章の補足資料・参考文献へのリンクあり
+- [著者サイト](https://www.robertosazuwaness.com/) – Robert Osazuwa Ness のサイト(旧 altdeep.ai)
