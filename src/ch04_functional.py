@@ -19,6 +19,9 @@
 # !pip install pgmpy==0.1.19
 # !pip install pandas==1.4.3
 
+# %% [markdown]
+# ## リスト4.10
+
 # %% colab={"base_uri": "https://localhost:8080/"} id="8qHOago0jluH" outputId="35c19b26-6d80-405e-b5e1-64e91c450acd"
 from functools import partial
 import numpy as np
@@ -134,12 +137,21 @@ h_dist = ctl_outcomes.assign(
 )
 print(h_dist)
 
+# %% [markdown]
+# ## リスト4.16
+
 # %% colab={"base_uri": "https://localhost:8080/"} id="VvpWmC9hgWJF" outputId="ea7dc643-aaff-4f32-d0aa-abc1a50103b5"
 df_mod = data_disc.merge(h_dist, on=['C', 'T', 'L'], how='left')
 print(df_mod)
 
+# %% [markdown]
+# ## リスト4.17
+
 # %% colab={"base_uri": "https://localhost:8080/", "height": 496} id="ehJpVrPrBTP9" outputId="6e09c2cd-2a65-4e75-9712-cef8dc300040"
 df_mod.boxplot("h_func", "C")
+
+# %% [markdown]
+# ## リスト4.18
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="5mnYJyQn6Kbi" outputId="afb5324a-b93b-450d-baea-69319e207cdf"
 from statsmodels.formula.api import ols
