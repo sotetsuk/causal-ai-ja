@@ -60,7 +60,7 @@ torchvision = { index = "pytorch-cpu" }
 # ============================================================================
 [dependency-groups]
 # ノートブック実行系(全章共通、default group)。本文では Colab が提供していた環境に相当
-notebook = ["jupytext>=1.16", "ipykernel", "nbconvert"]
+notebook = ["jupytext>=1.16", "ipykernel", "nbconvert", "jupyterlab"]
 
 ch02 = ["pgmpy==0.1.24", "pyro-ppl==1.8.6", "pandas", "numpy<2"]
 ch03 = [
