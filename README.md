@@ -3,6 +3,12 @@
 本リポジトリは、共立出版より刊行の訳書
 [『因果AI ―コードファーストで学ぶ因果推論―』](https://www.kyoritsu-pub.co.jp/book/b10169134.html)(Robert Osazuwa Ness 著・小山田創哲 訳)のサポートページです。
 
+<p align="center">
+  <a href="https://www.kyoritsu-pub.co.jp/book/b10169134.html"><img src="https://hondana-image.s3.amazonaws.com/book/image/10169134/normal_c95b7911-0adb-4b36-b173-ed29cfe7c3fa.jpg" alt="『因果AI ―コードファーストで学ぶ因果推論―』書影" width="200"></a>
+</p>
+
+<p align="center">(書影は<a href="https://www.kyoritsu-pub.co.jp/book/b10169134.html">共立出版の書籍ページ</a>より引用)</p>
+
 原著 *Causal AI* (Manning Publications, 2025) の公式リポジトリ [altdeep/causalAI](https://github.com/altdeep/causalAI) の fork です。
 
 ## 内容
