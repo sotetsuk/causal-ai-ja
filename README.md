@@ -36,7 +36,7 @@ uv run --group ch03 jupyter lab notebooks/ch03.ipynb
 | `ch12` | [ch12.ipynb](./notebooks/ch12.ipynb) | [GitHub](https://github.com/altdeep/causalAI/blob/master/book/chapter%2012/chapter_12_causal_decision.ipynb) / [Colab](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2012/chapter_12_causal_decision.ipynb) |
 | `ch13` | [ch13.ipynb](./notebooks/ch13.ipynb) | [GitHub](https://github.com/altdeep/causalAI/blob/master/book/chapter%2013/Chapter_13_Causality_LLMs.ipynb) / [Colab](https://colab.research.google.com/github/altdeep/causalAI/blob/master/book/chapter%2013/Chapter_13_Causality_LLMs.ipynb) |
 
-> [!NOTE]
+> [!WARNING]
 > - `ch09` / `ch10` / `ch11-dowhy` は pygraphviz を使うため、システムに graphviz が必要です。
 > - ノートブックは実行時に原著リポジトリの raw URL からデータを取得するため、ネットワーク接続が必要です。
 > - `ch05` / `ch06` / `ch09` / `ch11-bayesian` / `ch13` は深層学習の訓練・SVI・MCMC・GPT-2 の fine-tuning を含み、CPU での完走には長時間かかります(CI では import 検証のみ行っています)。
