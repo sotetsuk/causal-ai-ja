@@ -130,8 +130,15 @@ model_with_latent = BayesianNetwork(
 )
 estimator = EM(model_with_latent, data_sans_E)
 cmks_with_latent = estimator.get_parameters(latent_card={'E': 2})
-# 【本文との差分】本文は cmks_with_latent[1] を表示しているが、pgmpy 0.1.25 以降は
-# get_parameters() の返す CPD の順序が実行ごとに変わりうるため、変数名で E を選択する
+print(cmks_with_latent[1].to_factor())
+
+# %% [markdown]
+# > **補足(訳者)**: pgmpy 0.1.25 以降では `get_parameters()` が返す CPD リストの
+# > 順序に実行時ランダム性があり、`cmks_with_latent[1]` が E とは限りません
+# > (本文の環境では `[1]` が E でした)。確実に E の因果マルコフカーネル
+# > (本文 p.93 の表)を表示するには、次のように変数名で選択します。
+
+# %%
 cmk_E = next(cpd for cpd in cmks_with_latent if cpd.variable == "E")
 print(cmk_E.to_factor())
 
