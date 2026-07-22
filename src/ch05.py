@@ -90,6 +90,11 @@ def setup_dataloaders(batch_size=64, use_cuda=USE_CUDA):
     )
     return train_loader, test_loader
 
+# %% [markdown]
+# > **訳者補足**: macOS でのローカル実行でリスト5.15 の学習セルがエラーになる、
+# > または停止する場合は、リスト5.3 の `'num_workers': 1` を `'num_workers': 0` に
+# > 変更してください(macOS の multiprocessing が spawn 方式であることに起因します)。
+
 # %% [markdown] id="fRXUclDPpKpd"
 # ## リスト5.4
 
