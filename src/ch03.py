@@ -130,7 +130,10 @@ model_with_latent = BayesianNetwork(
 )
 estimator = EM(model_with_latent, data_sans_E)
 cmks_with_latent = estimator.get_parameters(latent_card={'E': 2})
-print(cmks_with_latent[1].to_factor())
+# 【本文との差分】本文は cmks_with_latent[1] を表示しているが、pgmpy 0.1.25 以降は
+# get_parameters() の返す CPD の順序が実行ごとに変わりうるため、変数名で E を選択する
+cmk_E = next(cpd for cpd in cmks_with_latent if cpd.variable == "E")
+print(cmk_E.to_factor())
 
 
 # %% [markdown] id="TT4kdobC749Y"
