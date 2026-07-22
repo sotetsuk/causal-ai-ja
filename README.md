@@ -44,12 +44,13 @@ uv run --group ch03 jupyter lab notebooks/ch03.ipynb
 
 ## 正誤情報(errata)
 
-| 該当箇所 | 内容 | 本リポジトリでの対応 |
-|---|---|---|
-| リスト3.6(p.93) | 本文指定の pgmpy==0.1.24 では EM のバグにより潜在変数 E の CPD が一様分布(すべて 0.5)に縮退し、書籍掲載の出力を再現できません([pgmpy 0.1.25 の CHANGELOG](https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md) に "Bug in EM when latent variables are present." として修正が記載。[v0.1.25 リリース](https://github.com/pgmpy/pgmpy/releases/tag/v0.1.25)) | pgmpy を 0.1.25 に変更。また 0.1.25 以降は `get_parameters()` が返す CPD の順序が実行ごとに変わりうるため、本文のコードはそのままに、変数名で E の CPD を確実に選択・表示する補足セルをリスト3.6 の直後に追加 |
+| 該当箇所 | 誤(Before) | 正(After) | 説明 |
+|---|---|---|---|
+| p.73 の囲み(第3章で使用するライブラリのバージョン) | pgmpy バージョン 0.1.24 | pgmpy バージョン 0.1.25 | pgmpy 0.1.24 以前の `ExpectationMaximization` には潜在変数の CPD が一様分布(すべて 0.5)に縮退するバグがあり、リスト3.6(p.93)が書籍掲載の出力を再現できません。このバグは 0.1.25 で修正されています([CHANGELOG](https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md) の 0.1.25 の項に "Bug in EM when latent variables are present."、[v0.1.25 リリース](https://github.com/pgmpy/pgmpy/releases/tag/v0.1.25))。 |
 
 > [!NOTE]
-> EM は乱数シードを固定していないため、リスト3.6 の推定値の数値自体は実行のたびに多少変動します(書籍の値と桁・傾向が一致すれば正常です)。
+> - pgmpy 0.1.25 以降は `get_parameters()` が返す CPD のリストの順序が実行ごとに変わりうるため、本リポジトリではリスト3.6 の直後に、変数名で E の CPD を確実に選択・表示する補足セルを追加しています。
+> - EM は乱数シードを固定していないため、リスト3.6 の推定値の数値自体は実行のたびに多少変動します(書籍の値と桁・傾向が一致すれば正常です)。
 
 ## 関連リンク
 
