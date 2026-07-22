@@ -108,6 +108,10 @@ ch09 = [
     "requests",
     "matplotlib",
     "numpy<2",
+    # 【本文との差分】追加。本文に install 指定はないが plot_graph が
+    # networkx.nx_pydot 経由で実行時に import する(Colab にはプリインストール
+    # されていたため本文では省略されている)
+    "pydot",
 ]
 ch10 = [
     "y0 @ git+https://github.com/y0-causal-inference/y0.git@v0.2.0",
