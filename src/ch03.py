@@ -133,7 +133,7 @@ cmks_with_latent = estimator.get_parameters(latent_card={'E': 2})
 print(cmks_with_latent[1].to_factor())
 
 # %% [markdown]
-# > **訳者補足**: pgmpy 0.1.24 以前のEMには既知のバグがある一方、pgmpy 0.1.25 以降では `get_parameters()` が返す CPD リストの順序に実行時ランダム性があり、`cmks_with_latent[1]` が E とは限りません。
+# > **訳者補足**: pgmpy 0.1.24 以前の EM には既知のバグがある一方、pgmpy 0.1.25 以降では `get_parameters()` が返す CPD リストの順序に実行時ランダム性があり、`cmks_with_latent[1]` が E とは限りません。
 # > 確実に E の因果マルコフカーネルを表示するには、次のように変数名で選択します。
 
 
