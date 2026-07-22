@@ -64,7 +64,12 @@ notebook = ["jupytext>=1.16", "ipykernel", "nbconvert", "jupyterlab"]
 
 ch02 = ["pgmpy==0.1.24", "pyro-ppl==1.8.6", "pandas", "numpy<2"]
 ch03 = [
-    "pgmpy==0.1.24",
+    # 【本文との差分】本文は pgmpy==0.1.24。0.1.24 以前の EM には潜在変数の CPD が
+    # 一様分布に縮退するバグがあり(E ステップで対数尤度を exp せずに正規化)、
+    # リスト3.6 が本文の出力を再現できないため、修正版の 0.1.25 に変更した。
+    # 0.1.25 の CHANGELOG に "Bug in EM when latent variables are present." とある。
+    # https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md
+    "pgmpy==0.1.25",
     "pyro-ppl==1.8.6",
     "graphviz==0.20.1",
     "dowhy==0.11.1",

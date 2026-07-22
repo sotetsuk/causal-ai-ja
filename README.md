@@ -42,6 +42,13 @@ uv run --group ch03 jupyter lab notebooks/ch03.ipynb
 > - `ch05` / `ch06` / `ch09` / `ch11-bayesian` / `ch13` は深層学習の訓練・SVI・MCMC・GPT-2 の fine-tuning を含み、CPU での完走には長時間かかります(CI では import 検証のみ行っています)。
 > - `ch10` / `ch12` は、取得したコードの実行前確認(`exec` のアンコメントや `input()` への応答)を読者が対話的に行う必要があります。
 
+## 正誤表
+
+| 該当箇所 | 誤(Before) | 正(After) | 説明 |
+|---|---|---|---|
+| p.73 | pgmpy バージョン 0.1.24 | pgmpy バージョン 0.1.25 | pgmpy 0.1.24 以前の EM には既知のバグがあり、リスト3.6 の出力が影響を受けます。このバグは 0.1.25 で修正されています([CHANGELOG](https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md))。 |
+
+
 ## 関連リンク
 
 - [Manning 書籍ページ](https://www.manning.com/books/causal-ai): 原著 *Causal AI* (Robert Osazuwa Ness, Manning Publications, 2025)
