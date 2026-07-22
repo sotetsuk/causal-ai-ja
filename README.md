@@ -46,7 +46,7 @@ uv run --group ch03 jupyter lab notebooks/ch03.ipynb
 
 | 該当箇所 | 誤(Before) | 正(After) | 説明 |
 |---|---|---|---|
-| p.73 | pgmpy バージョン 0.1.24 | pgmpy バージョン 0.1.25 | pgmpy 0.1.24 以前のEMには既知のバグがあり、リスト3.6の出力が影響を受けます。このバグは 0.1.25 で修正されています([CHANGELOG](https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md) 。 
+| p.73 | pgmpy バージョン 0.1.24 | pgmpy バージョン 0.1.25 | pgmpy 0.1.24 以前のEMには既知のバグがあり、リスト3.6の出力が影響を受けます。このバグは 0.1.25 で修正されています([CHANGELOG](https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md))。 |
 
 
 ## 関連リンク
