@@ -47,7 +47,7 @@ uv run --group ch03 jupyter lab notebooks/ch03.ipynb
 | 該当箇所 | 誤(Before) | 正(After) | 説明 |
 |---|---|---|---|
 | p.73 | pgmpy バージョン 0.1.24 | pgmpy バージョン 0.1.25 | pgmpy 0.1.24 以前の EM には既知のバグがあり、リスト3.6 の出力が影響を受けます。このバグは 0.1.25 で修正されています([CHANGELOG](https://github.com/pgmpy/pgmpy/blob/dev/CHANGELOG.md))。 |
-| p.426 | `New effect:-0.024…` / `p value:0.86`(リスト11.18 の出力) | dowhy 0.11 では `New effect:` 元の推定値と同じ値 / `p value:0.0` | `outcome_function` は dowhy に存在しない引数として無視されるほか、dowhy 0.10 以降にはフロントドア推定に対する dummy_outcome_refuter が機能しないバグがあり、指定バージョンでは掲載出力を再現できません。掲載出力は旧バージョン(0.9 系)での実行によるものです。 |
+| p.426 | `New effect:-0.024…` / `p value:0.86`(リスト11.18 の出力) | dowhy 0.11 では `New effect:` 元の推定値と同じ値 / `p value:0.0` | `outcome_function` は dowhy の公式ドキュメントには登場するものの実装には存在しない引数として無視されるほか、dowhy 0.10 以降にはフロントドア推定に対する dummy_outcome_refuter が機能しないバグがあり、指定バージョンでは掲載出力を再現できません。掲載出力は旧バージョン(0.9 系)での実行によるものです。 |
 
 
 ## 関連リンク
