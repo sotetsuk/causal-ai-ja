@@ -287,11 +287,7 @@ res_dummy_outcome = ref[0]
 print(res_dummy_outcome)
 
 # %% [markdown]
-# > **訳者補足**: dowhy 0.11 ではこの反証は機能せず、出力は「New effect: 元の
-# > フロントドア推定値と同じ値 / p value: 0.0」になります。`outcome_function` は
-# > dowhy の公式ドキュメントには登場するものの実装には存在しない引数で、無視されます。
-# > また、フロントドア推定に対する本反証には dowhy 0.10 以降のバグがあります。
-# > 書籍掲載の出力は旧バージョンによるものです。
+# > **訳者補足**: dowhy 0.11 ではこの反証は機能しません。`outcome_function` はdowhy の公式ドキュメントには登場するものの実装上、無視されています。
 
 
 # %% [markdown] id="tmtk16EI4cGr"
