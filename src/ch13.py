@@ -97,9 +97,6 @@ for idx, token in enumerate(input_ids[0]):
     print(f"Token: {tokenizer.decode(token)}" +
            f" | Log Probability: {token_log_prob}")
 
-# %% [markdown]
-# > **訳者補足**: 本文 p.506 のコードは2つ目の文字列に f が抜けており、そのままでは
-# > 対数確率の数値が表示されません。ここでは f を補って実行しています。
 
 
 # %% [markdown] id="hfcIfZ7gLJ4Y"
