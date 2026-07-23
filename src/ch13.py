@@ -95,7 +95,7 @@ log_probs = torch.nn.functional.log_softmax(logits, dim=-1)
 for idx, token in enumerate(input_ids[0]):
     token_log_prob = log_probs[0][idx][token].item()
     print(f"Token: {tokenizer.decode(token)}" +
-           " | Log Probability: {token_log_prob}")
+           f" | Log Probability: {token_log_prob}")
 
 
 # %% [markdown] id="hfcIfZ7gLJ4Y"
