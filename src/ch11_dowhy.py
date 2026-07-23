@@ -286,6 +286,12 @@ ref = model.refute_estimate(
 res_dummy_outcome = ref[0]
 print(res_dummy_outcome)
 
+# %% [markdown]
+# > **訳者補足**: dowhy 0.11 ではこの反証は機能せず、出力は「New effect: 元の
+# > フロントドア推定値と同じ値 / p value: 0.0」になります(`outcome_function` は
+# > dowhy に存在しない引数として無視されるほか、フロントドア推定に対する本反証には
+# > dowhy 0.10 以降のバグがあります)。書籍掲載の出力は旧バージョンによるものです。
+
 
 # %% [markdown] id="tmtk16EI4cGr"
 # ## リスト11.19
