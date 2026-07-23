@@ -98,7 +98,6 @@ for idx, token in enumerate(input_ids[0]):
            f" | Log Probability: {token_log_prob}")
 
 
-
 # %% [markdown] id="hfcIfZ7gLJ4Y"
 # ## リスト13.5
 
