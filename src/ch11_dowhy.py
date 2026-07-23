@@ -286,6 +286,9 @@ ref = model.refute_estimate(
 res_dummy_outcome = ref[0]
 print(res_dummy_outcome)
 
+# %% [markdown]
+# > **訳者補足**: dowhy 0.11 ではこの反証は機能しません。`outcome_function` は dowhy の公式ドキュメントには登場するものの実装上、無視されています。
+
 
 # %% [markdown] id="tmtk16EI4cGr"
 # ## リスト11.19
